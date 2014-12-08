@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/08 01:08:10 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/08 23:59:11 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,5 @@ int				get_next_line(int const fd, char **line)
 		if (ret == 0)
 			return (0);
 	}
-	ft_putendl("On avance!");
 	return (0);
 }

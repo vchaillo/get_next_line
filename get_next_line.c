@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/09 00:01:28 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/09 00:38:16 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,42 @@ static int		ft_read(const int fd, char **tmp, char **buffer, int *ret)
 	 * La fonction renvoie 1 en cas de lecture reussie sinon -1*/
 
 	*buffer = ft_strnew(BUFF_SIZE + 1);
-	if ((ret == read(fd, *buffer, BUFF_SIZE)) == -1)
+	if ((*ret == read(fd, *buffer, BUFF_SIZE)) == -1)
 		return (-1);
-	*buffer[ret] = '\0';
-	*buffer = ft_strjoin(*buffer, *tmp);
+	*buffer[*ret] = '\0';
+	*tmp = ft_strjoin(*tmp, *buffer);
+	return (1);
 }
 
-static int		ft_addline(char **tmp, char **buffer)
+static int		ft_addline(char **tmp, char **buffer, int *ret)
 {
 	/* La fonction renvoie 1 si elle trouve une ligne sinon elle renvoie 0
 	 * La fonction recherche un '\n'
 	 * - Si il y en a un:
-	 *   - Copie de tmp et buffer jusqu'au '\n' dans line
+	 *   - Copie du buffer jusqu'au '\n' dans tmp
 	 *   - On positionne le pointeur buffer sur le char apres le '\n'
 	 * - Si il n'y en a pas:
 	 *   - On verifie si le ret < BUFF_SIZE, on ajoute buffer dans line 
 	 *   - Si ce n'est pas le cas on copie buffer dans tmp et on 
 	 *   relance la lecture car nous n'avons pas encore une ligne complete */
+
+	char	*str;
+
+	if (ft_strlen(*buffer) != BUFF_SIZE + 1)
+		return (1);
+	if ((str = ft_strchr(*buffer, '\n')) != NULL)
+	{
+		*str = '\0';
+		*tmp = ft_strjoin(*tmp, *buffer);
+		*buffer = str + 1;
+		return (0);
+	}
+	if (*ret < BUFF_SIZE)
+	{
+		*tmp = ft_strjoin(*tmp, *buffer);
+		return (0);
+	}
+	return (1);
 }
 
 int				get_next_line(int const fd, char **line)
@@ -57,9 +76,9 @@ int				get_next_line(int const fd, char **line)
 	ret = 1;
 	while (ret > 0)
 	{
-			while (ft_addline(tmp, buffer, &ret) != 0)
+			while (ft_addline(&tmp, &buffer, &ret) != 0)
 			{
-				if ((ft_read(fd, tmp, buffer)) == -1)
+				if ((ft_read(fd, &tmp, &buffer, &ret)) == -1)
 					return (-1);
 			}
 			*line = ft_strdup(tmp);

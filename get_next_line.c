@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 
+
 static int		my_realloc(int const fd, char **buffer, int *ret)
 {
 	char			*tmp;

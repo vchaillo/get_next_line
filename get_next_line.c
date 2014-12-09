@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/09 00:38:16 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/09 01:07:36 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static int		ft_addline(char **tmp, char **buffer, int *ret)
 
 	char	*str;
 
-	if (ft_strlen(*buffer) != BUFF_SIZE + 1)
-		return (1);
 	if ((str = ft_strchr(*buffer, '\n')) != NULL)
 	{
 		*str = '\0';
@@ -53,7 +51,7 @@ static int		ft_addline(char **tmp, char **buffer, int *ret)
 		*buffer = str + 1;
 		return (0);
 	}
-	if (*ret < BUFF_SIZE)
+	if (*ret < BUFF_SIZE && *buffer == '\0')
 	{
 		*tmp = ft_strjoin(*tmp, *buffer);
 		return (0);
@@ -70,18 +68,25 @@ int				get_next_line(int const fd, char **line)
 	static char		*buffer;
 	char			*tmp;
 	int				ret;
+	int				test;
 
+	test = 0;
 	if (!line || fd < 0)
 		return (-1);
 	ret = 1;
+	tmp = ft_strnew(0);
 	while (ret > 0)
 	{
-			while (ft_addline(&tmp, &buffer, &ret) != 0)
+			while ((test = ft_addline(&tmp, &buffer, &ret)) == 1)
 			{
 				if ((ft_read(fd, &tmp, &buffer, &ret)) == -1)
 					return (-1);
+				ft_putnbr(test);
+//				ft_putendl(buffer);
 			}
 			*line = ft_strdup(tmp);
+//			ft_putendl(*line);
+//			ft_putendl(tmp);
 			return (1);
 	}
 	return (0);

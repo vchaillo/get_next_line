@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/09 14:00:14 by valentin         ###   ########.fr       */
+/*   Updated: 2014/12/09 15:18:59 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		get_next_line(int const fd, char **line)
 			ft_memmove(buffer, str + 1, ft_strlen(str + 1) + 1);
 			return (1);
 		}
-		else if (ret < BUFF_SIZE)
+		else if (ret < BUFF_SIZE && tmp[ret] == '\0')
 		{
 			*line = ft_strdup(buffer);
 			return (1);

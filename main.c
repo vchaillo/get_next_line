@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:31:21 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/09 01:53:45 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/09 14:02:03 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int		main(int argc, char **argv)
 {
-	int		fd;
+	int	fd;
 	char	*line;
 
 	if (argc == 1)
@@ -33,13 +33,16 @@ int		main(int argc, char **argv)
 		if ((fd = open(argv[1], O_RDONLY)) == -1)
 		{
 			close(fd);
-			ft_putendl("Veuillez entrer un nom de fichier valide");
+			ft_putendl("failed to open the file");
 			return (0);
 		}
-		while (get_next_line(fd, &line) == 1) 
+		else
 		{
-			ft_putendl(line);
-			free(line);
+			while (get_next_line(fd, &line) == 1) 
+			{
+				ft_putendl(line);
+				free(line);
+			}
 		}
 	}
 	return (0);

@@ -6,18 +6,15 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/09 02:29:02 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/09 12:44:12 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 
-static int		my_realloc(int const fd, char **buffer, int *ret)
+static int	my_realloc(int const fd, char **buffer, char *tmp, int *ret)
 {
-	char			*tmp;
-
-	tmp = ft_strnew(BUFF_SIZE + 1);
 	if ((*ret = read(fd, tmp, BUFF_SIZE)) == -1)
 		return (-1);
 	tmp[*ret] = '\0';
@@ -25,15 +22,17 @@ static int		my_realloc(int const fd, char **buffer, int *ret)
 	return (0);
 }
 
-int				get_next_line(int const fd, char **line)
+int		get_next_line(int const fd, char **line)
 {
 	static char		*buffer = "\0";
 	char			*str;
-	int				ret;
+	char			*tmp;
+	int			ret;
 
 	if (!line || fd < 0)
 		return (-1);
 	ret = BUFF_SIZE;
+	tmp = ft_strnew(BUFF_SIZE + 1);
 	while (ret > 0)
 	{
 		if ((str = ft_strchr(buffer, '\n')))
@@ -48,7 +47,7 @@ int				get_next_line(int const fd, char **line)
 			*line = ft_strdup(buffer);
 			return (1);
 		}
-		if (my_realloc(fd, &buffer, &ret) == -1)
+		if (my_realloc(fd, &buffer, tmp, &ret) == -1)
 			return (-1);
 	}
 	return (0);

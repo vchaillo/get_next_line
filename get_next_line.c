@@ -6,14 +6,17 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/10 22:52:53 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/10 22:59:23 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	my_realloc(int const fd, char **buffer, char *tmp, int *ret)
+static int	my_realloc(int const fd, char **buffer, int *ret)
 {
+	char			*tmp;
+
+	tmp = ft_strnew(BUFF_SIZE + 1);
 	if ((*ret = read(fd, tmp, BUFF_SIZE)) == -1)
 		return (-1);
 	tmp[*ret] = '\0';
@@ -38,7 +41,6 @@ static int	get_endl(char **buffer, char **line)
 int			get_next_line(int const fd, char **line)
 {
 	static char		*buffer = "\0";
-	char			*tmp;
 	int				ret;
 
 	if (!line || fd < 0)
@@ -46,12 +48,11 @@ int			get_next_line(int const fd, char **line)
 	if (*line)
 		free(*line);
 	ret = BUFF_SIZE;
-	tmp = ft_strnew(BUFF_SIZE + 1);
 	while (ret > 0 || ft_strlen(buffer))
 	{
 		if ((get_endl(&buffer, line)) == 1)
 			return (1);
-		if (my_realloc(fd, &buffer, tmp, &ret) == -1)
+		if (my_realloc(fd, &buffer, &ret) == -1)
 			return (-1);
 		if (ret == 0 && ft_strlen(buffer))
 		{

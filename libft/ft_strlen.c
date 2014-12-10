@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 15:41:11 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/11/30 14:03:29 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/10 22:13:13 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ size_t	ft_strlen(const char *s)
 	size_t		i;
 
 	i = 0;
-	while (s[i])
-		i++;
+	if (s)
+	{
+		while (s[i])
+			i++;
+	}
 	return (i);
 }

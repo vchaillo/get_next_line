@@ -6,7 +6,7 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 15:04:37 by vchaillo          #+#    #+#              #
-#    Updated: 2014/12/09 12:46:12 by valentin         ###   ########.fr        #
+#    Updated: 2014/12/10 22:10:30 by vchaillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -24,7 +24,7 @@ SRCS = ft_strlen.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putendl.c\
 	   ft_strmapi.c ft_itoa.c ft_strsplit.c ft_lstnew.c ft_lstdelone.c\
 	   ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 OBJS = $(SRCS:.c=.o)
 

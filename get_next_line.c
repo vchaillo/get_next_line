@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/10 23:05:24 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/10 23:28:43 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int			get_next_line(int const fd, char **line)
 		if (ret == 0 && ft_strlen(buffer))
 		{
 			*line = ft_strdup(buffer);
-			buffer[0] = '\0';
 			free(buffer);
 			return (1);
 		}

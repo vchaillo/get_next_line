@@ -15,5 +15,3 @@ A faire avant rendu:
 
 =============
 Project of 42
-
-coucou

@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 22:36:53 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/11/27 23:39:03 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/10 23:48:36 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putstr_fd("-2147483648", fd);
 	else if (n >= 0 && n <= 9)
 		ft_putchar_fd(n + '0', fd);
-	if (n < 0)
+	else if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
 		ft_putnbr_fd(-n, fd);

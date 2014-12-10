@@ -6,7 +6,7 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 15:04:37 by vchaillo          #+#    #+#              #
-#    Updated: 2014/12/10 22:10:30 by vchaillo         ###   ########.fr        #
+#    Updated: 2014/12/10 23:42:58 by vchaillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -34,7 +34,6 @@ $(NAME):
 	@gcc -c $(SRCS) $(FLAGS) -I includes
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@rm -f $(OBJS)
 	@echo "\033[32mlibft.a was created\033[0m"
 objs:
 	@gcc -c $(SRCS) $(FLAGS) -I includes

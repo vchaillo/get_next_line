@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:31:21 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/10 23:29:12 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/16 19:08:19 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int		main(int argc, char **argv)
 		if ((fd = open(argv[1], O_RDONLY)) == -1)
 		{
 			close(fd);
-			ft_putendl("failed to open the file");
+			ft_putstr("Failed to open ");
+			ft_putstr(argv[1]);
+			ft_putendl(" file");
 			return (0);
 		}
 		else

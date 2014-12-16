@@ -6,35 +6,35 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/11 19:01:03 by vchaillo         ###   ########.fr       */
+/*   Updated: 2014/12/16 19:05:50 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	my_realloc(int const fd, char **buffer, int *ret)
+static int	my_realloc(int const fd, char **tmp, int *ret)
 {
-	char			*tmp;
+	char			*buffer;
 
-	tmp = ft_strnew(BUFF_SIZE + 1);
-	if ((*ret = read(fd, tmp, BUFF_SIZE)) == -1)
+	buffer = ft_strnew(BUFF_SIZE + 1);
+	if ((*ret = read(fd, buffer, BUFF_SIZE)) == -1)
 		return (-1);
-	if (*buffer == '\0')
-		*buffer = ft_strnew(0);
-	tmp[*ret] = '\0';
-	*buffer = ft_strjoin(*buffer, tmp);
+	if (*tmp == '\0')
+		*tmp = ft_strnew(0);
+	buffer[*ret] = '\0';
+	*tmp = ft_strjoin(*tmp, buffer);
 	return (0);
 }
 
-static int	get_endl(char **buffer, char **line)
+static int	get_endl(char **tmp, char **line)
 {
 	char			*str;
 
-	if ((str = ft_strchr(*buffer, '\n')))
+	if ((str = ft_strchr(*tmp, '\n')))
 	{
 		*str = '\0';
-		*line = ft_strdup(*buffer);
-		ft_memmove(*buffer, str + 1, ft_strlen(str + 1) + 1);
+		*line = ft_strdup(*tmp);
+		ft_memmove(*tmp, str + 1, ft_strlen(str + 1) + 1);
 		return (1);
 	}
 	return (0);
@@ -42,24 +42,24 @@ static int	get_endl(char **buffer, char **line)
 
 int			get_next_line(int const fd, char **line)
 {
-	static char		*buffer[256];
-	int				ret;
+	static char		*tmp[256];
+	int			ret;
 
 	if (!line || fd < 0)
 		return (-1);
 	if (*line)
 		free(*line);
 	ret = BUFF_SIZE;
-	while (ret > 0 || ft_strlen(buffer[fd]))
+	while (ret > 0 || ft_strlen(tmp[fd]))
 	{
-		if ((get_endl(&buffer[fd], line)) == 1)
+		if ((get_endl(&tmp[fd], line)) == 1)
 			return (1);
-		if (my_realloc(fd, &buffer[fd], &ret) == -1)
+		if (my_realloc(fd, &tmp[fd], &ret) == -1)
 			return (-1);
-		if (ret == 0 && ft_strlen(buffer[fd]))
+		if (ret == 0 && ft_strlen(tmp[fd]))
 		{
-			*line = ft_strdup(buffer[fd]);
-			free(buffer[fd]);
+			*line = ft_strdup(tmp[fd]);
+			free(tmp[fd]);
 			return (1);
 		}
 	}

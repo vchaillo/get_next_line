@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:31:21 by vchaillo          #+#    #+#             */
-/*   Updated: 2014/12/16 19:08:19 by valentin         ###   ########.fr       */
+/*   Updated: 2015/01/06 18:49:20 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 int		main(int argc, char **argv)
 {
-	int	fd;
+	int		fd1;
+	int		fd2;
 	char	*line = NULL;
 
 	if (argc == 1)
@@ -27,17 +28,31 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
-		if ((fd = open(argv[1], O_RDONLY)) == -1)
+		if ((fd1 = open(argv[1], O_RDONLY)) == -1)
 		{
-			close(fd);
+			close(fd1);
 			ft_putstr("Failed to open ");
 			ft_putstr(argv[1]);
 			ft_putendl(" file");
 			return (0);
 		}
+		if ((fd2 = open(argv[2], O_RDONLY)) == -1)
+		{
+			close(fd2);
+			ft_putstr("Failed to open ");
+			ft_putstr(argv[2]);
+			ft_putendl(" file");
+			return (0);
+		}
 		else
 		{
-			while (get_next_line(fd, &line) == 1) 
+			if (get_next_line(fd1, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd2, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd1, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd2, &line) == 1)
 				ft_putendl(line);
 		}
 	}

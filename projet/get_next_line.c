@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/01/06 19:14:02 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/01/08 21:39:22 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	my_realloc(int const fd, char **tmp, int *ret)
 		*tmp = ft_strnew(0);
 	buffer[*ret] = '\0';
 	*tmp = ft_strjoin(*tmp, buffer);
+	free(buffer);
 	return (0);
 }
 
@@ -43,7 +44,7 @@ static int	get_endl(char **tmp, char **line)
 int			get_next_line(int const fd, char **line)
 {
 	static char		*tmp[256];
-	int			ret;
+	int				ret;
 
 	if (!line || fd < 0)
 		return (-1);
@@ -63,5 +64,6 @@ int			get_next_line(int const fd, char **line)
 			return (1);
 		}
 	}
+	free(tmp[fd]);
 	return (0);
 }

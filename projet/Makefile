@@ -6,14 +6,16 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/22 08:35:30 by vchaillo          #+#    #+#              #
-#    Updated: 2014/12/13 05:05:28 by valentin         ###   ########.fr        #
+#    Updated: 2015/01/12 18:54:51 by vchaillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = test_gnl
 
 SRC = get_next_line.c
 
-OBJ = $(SRC:.c=.o)
+OBJS = $(SRC:.c=.o)
+
+OBJS_PATH = objs/
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -23,6 +25,8 @@ $(NAME):
 	@gcc $(FLAGS) -I /libft/includes/ -c $(SRC)
 	@gcc $(FLAGS) -I /libft/includes/ -c main.c
 	@gcc -o $(NAME) get_next_line.o main.o -L libft/ -lft
+	@mkdir objs/
+	@mv $(OBJS) main.o $(OBJS_PATH)
 	@echo "\033[32mtest_gnl was created!\033[0m"
 
 norm:
@@ -30,7 +34,7 @@ norm:
 	@norminette $(SRC) get_next_line.h
 
 clean:
-	@rm -f $(OBJ) main.o
+	@rm -rf $(OBJS_PATH)
 	@echo "\033[31msuppression main.o et get_next_line.o\033[0m"
 
 fclean: clean

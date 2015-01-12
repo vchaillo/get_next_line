@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/01/12 15:52:13 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 18:11:12 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static int	get_endl(char **tmp, char **line)
 
 int			get_next_line(int const fd, char **line)
 {
-	static char		*tmp[256];
+	static char		*tmp[1024];
 	int				ret;
 
 	if (!line || fd < 0)
 		return (-1);
-/*	if (*line)
-		free(*line);*/
+	if (*line)
+		free(*line);
 	ret = BUFF_SIZE;
 	while (ret > 0 || ft_strlen(tmp[fd]))
 	{

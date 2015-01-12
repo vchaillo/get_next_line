@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:31:21 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/01/08 21:26:40 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 15:28:21 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		fd1;
 	int		fd2;
-	char	*line = NULL;
+	char	*line;
 
 	if (argc == 1)
 	{

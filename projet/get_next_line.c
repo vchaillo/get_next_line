@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/01/08 21:39:22 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 15:52:13 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int			get_next_line(int const fd, char **line)
 
 	if (!line || fd < 0)
 		return (-1);
-	if (*line)
-		free(*line);
+/*	if (*line)
+		free(*line);*/
 	ret = BUFF_SIZE;
 	while (ret > 0 || ft_strlen(tmp[fd]))
 	{

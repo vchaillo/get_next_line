@@ -6,11 +6,12 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/01/12 19:29:22 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 20:10:02 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static int	my_realloc(int const fd, char **tmp, int *ret)
 {
@@ -48,8 +49,6 @@ int			get_next_line(int const fd, char **line)
 
 	if (!line || fd < 0)
 		return (-1);
-	if (*line)
-		free(*line);
 	ret = BUFF_SIZE;
 	while (ret > 0 || ft_strlen(tmp[fd]))
 	{
@@ -60,6 +59,7 @@ int			get_next_line(int const fd, char **line)
 		if (ret == 0 && ft_strlen(tmp[fd]))
 		{
 			*line = ft_strdup(tmp[fd]);
+			ft_bzero(tmp[fd], ft_strlen(tmp[fd]));
 			free(tmp[fd]);
 			return (1);
 		}

@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:31:21 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/01/12 15:28:21 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 20:02:06 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,18 @@ int		main(int argc, char **argv)
 		}
 		else
 		{
+			if (get_next_line(fd1, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd2, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd1, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd2, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd1, &line) == 1)
+				ft_putendl(line);
+			if (get_next_line(fd2, &line) == 1)
+				ft_putendl(line);
 			if (get_next_line(fd1, &line) == 1)
 				ft_putendl(line);
 			if (get_next_line(fd2, &line) == 1)

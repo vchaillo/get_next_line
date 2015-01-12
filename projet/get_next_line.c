@@ -6,12 +6,11 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/01/12 20:10:02 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 20:20:50 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static int	my_realloc(int const fd, char **tmp, int *ret)
 {

@@ -6,10 +6,12 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 15:04:37 by vchaillo          #+#    #+#              #
-#    Updated: 2014/12/10 23:42:58 by vchaillo         ###   ########.fr        #
+#    Updated: 2015/01/12 19:29:16 by vchaillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
+
+OBJS_PATH = objs/
 
 SRCS = ft_strlen.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putendl.c\
 	   ft_strclr.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c\
@@ -34,6 +36,8 @@ $(NAME):
 	@gcc -c $(SRCS) $(FLAGS) -I includes
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
+	@mkdir $(OBJS_PATH)
+	@mv $(OBJS) $(OBJS_PATH)
 	@echo "\033[32mlibft.a was created\033[0m"
 objs:
 	@gcc -c $(SRCS) $(FLAGS) -I includes
@@ -49,7 +53,7 @@ rm:
 	@rm -f test3
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf $(OBJS_PATH)
 	@echo "\033[31msuppression .o\033[0m"
 
 fclean: clean

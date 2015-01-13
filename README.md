@@ -3,7 +3,8 @@ get_next_line
 
 Todo list:
 ----------
-Rendu!
+Multi fd
+Fuites mémoire
 
 =============
 Project of 42

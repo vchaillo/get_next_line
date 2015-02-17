@@ -6,10 +6,10 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/22 08:35:30 by vchaillo          #+#    #+#              #
-#    Updated: 2015/02/17 04:40:25 by valentin         ###   ########.fr        #
+#    Updated: 2015/02/17 04:46:40 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = test_gnl
+NAME = gnl
 
 SRC = get_next_line.c
 
@@ -28,7 +28,7 @@ $(NAME):
 	@gcc -g -o $(NAME) get_next_line.o main.o -L libft/ -lft
 	@mkdir objs/
 	@mv $(OBJS) main.o $(OBJS_PATH)
-	@echo "\033[32mtest_gnl was created!\033[0m"
+	@echo "\033[32mgnl was created!\033[0m"
 
 norm:
 	@echo "\033[32mnorminette...\033[0m"

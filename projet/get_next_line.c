@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/02/05 20:05:18 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/02/17 04:57:23 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,26 @@ static int	get_endl(char **tmp, char **line)
 
 int			get_next_line(int const fd, char **line)
 {
-	static char		*tmp[1024];
-	int				ret;
+	static char		*tmp;
+	int			ret;
 
 	if (!line || fd < 0)
 		return (-1);
 	ret = BUFF_SIZE;
-	while (ret > 0 || ft_strlen(tmp[fd]))
+	while (ret > 0 || ft_strlen(tmp))
 	{
-		if ((get_endl(&tmp[fd], line)) == 1)
+		if ((get_endl(&tmp, line)) == 1)
 			return (1);
-		if (my_realloc(fd, &tmp[fd], &ret) == -1)
+		if (my_realloc(fd, &tmp, &ret) == -1)
 			return (-1);
-		if (ret == 0 && ft_strlen(tmp[fd]))
+		if (ret == 0 && ft_strlen(tmp))
 		{
-			*line = ft_strdup(tmp[fd]);
-			ft_bzero(tmp[fd], ft_strlen(tmp[fd]));
-			free(tmp[fd]);
+			*line = ft_strdup(tmp);
+			ft_bzero(tmp, ft_strlen(tmp));
+			free(tmp);
 			return (1);
 		}
 	}
-	free(tmp[fd]);
+	free(tmp);
 	return (0);
 }

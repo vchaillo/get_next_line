@@ -6,7 +6,7 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/22 08:35:30 by vchaillo          #+#    #+#              #
-#    Updated: 2015/01/27 21:07:35 by vchaillo         ###   ########.fr        #
+#    Updated: 2015/02/17 04:34:09 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = test_gnl
@@ -22,6 +22,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
+	@make -C libft/ re
 	@gcc $(FLAGS) -I /libft/includes/ -c $(SRC)
 	@gcc $(FLAGS) -I /libft/includes/ -c main.c
 	@gcc -o $(NAME) get_next_line.o main.o -L libft/ -lft

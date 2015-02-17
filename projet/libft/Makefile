@@ -6,7 +6,7 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/03 15:04:37 by vchaillo          #+#    #+#              #
-#    Updated: 2015/01/12 19:29:16 by vchaillo         ###   ########.fr        #
+#    Updated: 2015/02/17 08:45:24 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -39,12 +39,9 @@ $(NAME):
 	@mkdir $(OBJS_PATH)
 	@mv $(OBJS) $(OBJS_PATH)
 	@echo "\033[32mlibft.a was created\033[0m"
-objs:
-	@gcc -c $(SRCS) $(FLAGS) -I includes
-	@echo "\033[32mall .o were created\033[0m"
 	
 norm:
-	@echo "\033[33mnorminette...\033[0m"
+	@echo "\033[32mnorminette...\033[0m"
 	@norminette $(SRCS) includes/libft.h
 
 rm:
@@ -54,11 +51,11 @@ rm:
 
 clean:
 	@rm -rf $(OBJS_PATH)
-	@echo "\033[31msuppression .o\033[0m"
+	@echo "\033[31mSuppression des .o de la libft\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "\033[31msuppression libft.a\033[0m"
+	@echo "\033[31mSuppression libft.a\033[0m"
 
 re: fclean all
 

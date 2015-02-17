@@ -3,7 +3,6 @@ get_next_line
 
 Todo list:
 ----------
-Multi fd
 Fuites mémoire
 
 A faire avant rendu:

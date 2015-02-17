@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:31:21 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/02/03 19:12:06 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/02/17 07:55:47 by valentin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ int		main(int argc, char **argv)
 	int		fd;
 	int		fd1;
 	int		fd2;
-	char	*line;
+	char		*line;
 
 	if (argc == 1)
 	{
 		while (get_next_line(0, &line) == 1)
+		{
 			ft_putendl(line);
+//			free(line);
+		}
 	}
 	else if (argc == 3)
 	{
@@ -48,25 +51,55 @@ int		main(int argc, char **argv)
 		else
 		{
 			if (get_next_line(fd1, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd2, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd1, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd2, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd1, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd2, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd1, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd2, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd1, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 			if (get_next_line(fd2, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 		}
 	}
 	else
@@ -82,9 +115,13 @@ int		main(int argc, char **argv)
 		else
 		{
 			while (get_next_line(fd, &line) == 1)
+			{
 				ft_putendl(line);
+//				free(line);
+			}
 		}
 	
 	}
+	line = NULL;
 	return (0);
 }

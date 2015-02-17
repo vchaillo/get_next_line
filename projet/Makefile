@@ -6,7 +6,7 @@
 #    By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/22 08:35:30 by vchaillo          #+#    #+#              #
-#    Updated: 2015/02/17 04:34:09 by valentin         ###   ########.fr        #
+#    Updated: 2015/02/17 04:40:25 by valentin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = test_gnl
@@ -25,7 +25,7 @@ $(NAME):
 	@make -C libft/ re
 	@gcc $(FLAGS) -I /libft/includes/ -c $(SRC)
 	@gcc $(FLAGS) -I /libft/includes/ -c main.c
-	@gcc -o $(NAME) get_next_line.o main.o -L libft/ -lft
+	@gcc -g -o $(NAME) get_next_line.o main.o -L libft/ -lft
 	@mkdir objs/
 	@mv $(OBJS) main.o $(OBJS_PATH)
 	@echo "\033[32mtest_gnl was created!\033[0m"
@@ -36,11 +36,11 @@ norm:
 
 clean:
 	@rm -rf $(OBJS_PATH)
-	@echo "\033[31msuppression main.o et get_next_line.o\033[0m"
+	@echo "\033[31mSuppression main.o et get_next_line.o\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "\033[31msuppression test_gnl\033[0m"
+	@echo "\033[31mSuppression test_gnl\033[0m"
 
 re: fclean all
 

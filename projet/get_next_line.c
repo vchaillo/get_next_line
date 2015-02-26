@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:14:44 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/02/25 14:41:14 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/02/26 16:39:58 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int			get_next_line(int const fd, char **line)
 		}
 	}
 	free(tmp[fd]);
-	free(*tmp);
+	*tmp = NULL;
 	return (0);
 }

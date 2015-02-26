@@ -6,7 +6,7 @@
 /*   By: vchaillo <vchaillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/22 08:15:57 by vchaillo          #+#    #+#             */
-/*   Updated: 2015/02/05 20:05:20 by vchaillo         ###   ########.fr       */
+/*   Updated: 2015/02/26 15:18:06 by vchaillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <sys/uio.h>
 # include "libft/includes/libft.h"
 
-# define BUFF_SIZE 8
+# define BUFF_SIZE 2
 
 int		get_next_line(int const fd, char **line);
 

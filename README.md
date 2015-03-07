@@ -2,11 +2,11 @@ get_next_line
 =============
 
 Todo list:
-----------
-Fuites mémoire
+==========
+- Gestion des fuites mémoire
 
 A faire avant rendu:
---------------------
+====================
 Unit test
 get_next_line.sh
 Norme

@@ -65,6 +65,6 @@ char			**ft_strsplit(char const *s, char c)
 		s = s + word_len;
 		i++;
 	}
-	tab[i] = '\0';
+	tab[i] = "\0";
 	return (tab);
 }

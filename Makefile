@@ -11,37 +11,51 @@
 # **************************************************************************** #
 NAME = gnl
 
-SRC = get_next_line.c
+CC	=	gcc
+CFLAGS	+=	-Wall -Wextra -Werror
+RM	=	rm -Rf
 
-OBJS = $(SRC:.c=.o)
+SRC = 	main.c \
+		get_next_line.c
 
-OBJS_PATH = objs/
+FILE := $(shell ls libft/libft.a)
 
-FLAGS = -Wall -Wextra -Werror
+LIBFT =	 -Llibft/ -lft
 
-all: $(NAME)
+INC	=	-I inc/ -I libft/include/
 
-$(NAME):
-	@make -C libft/ re
-	@gcc $(FLAGS) -I /libft/includes/ -c $(SRC)
-	@gcc $(FLAGS) -I /libft/includes/ -c main.c
-	@gcc -g -o $(NAME) get_next_line.o main.o -L libft/ -lft
-	@mkdir objs/
-	@mv $(OBJS) main.o $(OBJS_PATH)
-	@echo "\033[32mgnl was created!\033[0m"
+OBJ	=	$(patsubst %.c, obj/%.o, $(SRC))
 
-norm:
-	@echo "\033[32mnorminette...\033[0m"
-	@norminette $(SRC) get_next_line.h
+
+all:   $(NAME)
+$(NAME): obj $(OBJ)
+		
+ifneq ($(FILE), libft/libft.a)
+	@make -C libft/
+endif
+	
+		@echo "[\033[1;32m******  Creating $(NAME) executable  ******\033[m]"
+		@$(CC) $(CFLAGS) -o $@ $(OBJ) $(LIBFT)
+
+obj/%.o: src/%.c
+		@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+		@echo "[\033[1;32m√\033[m]" $<
+
+obj:
+		@mkdir -p obj
 
 clean:
-	@rm -rf $(OBJS_PATH)
-	@echo "\033[31mSuppression main.o et get_next_line.o\033[0m"
+		@echo "[\033[31;1m******  Cleaning object files  ******\033[0m]"
+		@$(RM) obj/
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "\033[31mSuppression test_gnl\033[0m"
+fclean:	clean
+		@echo "[\033[31;1m******  Cleaning executables  ******\033[0m]"
+		@$(RM) $(NAME)
+
+norm:
+		@echo "[\033[1;32m******  norminette ...  ******\033[0m]"
+		@norminette **/*.[ch]
 
 re: fclean all
 
-.PHONY: all norm clean fclean re
+.PHONY: all obj clean fclean norm re
